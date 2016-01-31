@@ -1,0 +1,69 @@
+<div class="col-md-8">
+  <h1>Update Employee: <%= @employee.full_name %></h1>
+
+  <%= form_tag "/employees/#{@employee.id}", method: :patch do %>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th><%= label_tag :first_name %></th>
+        <th><%= label_tag :middle_name %></th>
+        <th><%= label_tag :last_name %></th>
+        <th><%= label_tag :email %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= text_field_tag :first_name, @employee.first_name %></td>
+        <td><%= text_field_tag :middle_name, @employee.middle_name %></td>
+        <td><%= text_field_tag :last_name, @employee.last_name %></td>
+        <td><%= text_field_tag :email, @employee.email %></td>  
+      </tr>
+    </tbody>
+
+    <thead>
+      <tr>
+        <th><%= label_tag :phone %></th>
+        <th><%= label_tag :job_title %></th>
+        <th><%= label_tag :salary %></th>
+        <th><%= label_tag :gender %></th>  
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= text_field_tag :phone, @employee.phone_number %></td>
+        <td><%= text_field_tag :job_title, @employee.job_title %></td>
+        <td><%= text_field_tag :salary, @employee.salary %></td>
+        <td><%= text_field_tag :gender, @employee.gender %></td>  
+      </tr>
+    </tbody>
+
+    <thead>
+      <tr>
+        <th><%= label_tag :longitude %></th>
+        <th><%= label_tag :latitude %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= text_field_tag :longitude %></td>
+        <td><%= text_field_tag :latitude %></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4><%= label_tag :address %></h4>
+  <%= text_field_tag :address, @employee.address %>
+  <br>
+  <h4><%= label_tag :bio %></h4>
+  <%= text_area_tag :bio, nil, size: "50x10" %>
+  <br>
+  <br>
+
+
+  <%= submit_tag 'Update', class: "btn btn-default"%>
+
+  <% end %>
+</div>  
