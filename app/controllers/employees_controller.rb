@@ -6,6 +6,11 @@ class EmployeesController < ApplicationController
     else
       @employees = Employee.all
     end
+
+    if params[:group]
+      @employees = Group.find_by(name: params[:group]).employees
+      @employees = @employees.where(user_id: current_user.id)
+    end
   end
 
   def new
@@ -70,5 +75,13 @@ class EmployeesController < ApplicationController
     flash[:danger] = "Employee Deleted"
 
     redirect_to '/'
+  end
+
+  def search
+    @employees = Employee.where("first_name LIKE ? OR middle_name LIKE ? OR last_name LIKE ? OR gender LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+
+    @employees = @employees.where(user_id: current_user.id)
+
+    render :index
   end
 end

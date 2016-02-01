@@ -1,6 +1,8 @@
 class Employee < ActiveRecord::Base
 
   belongs_to :user
+  has_many :grouped_employees
+  has_many :groups, through: :grouped_employees
 
   def friendly_updated_at
     updated_at.strftime("%b %e, %Y")

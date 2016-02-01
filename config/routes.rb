@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   delete '/employees/:id' => 'employees#destroy'
 
+  post '/search' => 'employees#search'
+
 end

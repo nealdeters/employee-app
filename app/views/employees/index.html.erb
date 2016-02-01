@@ -1,5 +1,17 @@
 <h1>Employees</h1>
 
+<div class="btn-group">
+  <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Filters <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <% Group.all.each do |group| %>
+          <li><%= link_to group.name.titleize, "employees?group=#{group.name}" %>
+        </li>
+    <% end %>
+  </ul>
+</div>
+
 <table class="table table-hover">
   <thead>
     <tr>
